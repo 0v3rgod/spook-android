@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
+    <!-- 100.78.69.110 (Arch) aparece UMA vez so: o Android proibe repetir o mesmo
+         dominio em dois domain-config. Aqui ficam o cleartext (servidor.py:5000) e a
+         CA do espelho de tela. O espelho em si ja e HTTPS e o nginx recusa cleartext. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">100.78.69.110</domain>
+        <trust-anchors>
+            <certificates src="@raw/cert_ca_mirror" />
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">127.0.0.1</domain>
         <domain includeSubdomains="true">192.168.0.100</domain>
-        <domain includeSubdomains="true">100.78.69.110</domain>
+        <domain includeSubdomains="true">192.168.0.108</domain>
         <domain includeSubdomains="true">100.70.88.101</domain>
+        <domain includeSubdomains="true">100.79.55.68</domain>
         <domain includeSubdomains="true">100.88.199.27</domain>
     </domain-config>
     <base-config cleartextTrafficPermitted="false">
