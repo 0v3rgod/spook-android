@@ -15,8 +15,8 @@ android {
         applicationId = "com.taylor.pentestlink"
         minSdk = 29
         targetSdk = 36
-        versionCode = 13
-        versionName = "1.13"
+        versionCode = 14
+        versionName = "1.14"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
