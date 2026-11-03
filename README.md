@@ -26,13 +26,13 @@ App Android (Kotlin + Jetpack Compose) do ecossistema SPOOK. Comunica-se com o *
 ## Arquitetura de rede
 
 ```
-App (Poco X7, Tailscale 100.66.95.80)
+App (Poco X7, Tailscale <CELULAR_TAILSCALE_IP>)
     │
-    ├── Relay (Oracle VM, 100.70.88.101:5000) ──► Google Drive (gdrive:SPOOK)
+    ├── Relay (Oracle VM, <RELAY_TAILSCALE_IP>:5000) ──► Google Drive (gdrive:SPOOK)
     │     ├── Socket.IO: chat, tasks, pad, IA, notificações, leitura
     │     └── HTTP: /livros, /media, /relatorios, /finance, /pad, /upload
     │
-    └── Arch Server (100.78.69.110:5000) ──► Google Drive (mesmo gdrive:SPOOK)
+    └── Arch Server (<ARCH_TAILSCALE_IP>:5000) ──► Google Drive (mesmo gdrive:SPOOK)
           ├── Socket.IO: comandos, métricas, terminal, teclado, scans IA
           └── Bridge IA: executa tool-calls do relay (nmap, comandos, info)
 ```
@@ -49,19 +49,19 @@ cd AndroidStudioProjects/PentestLink
 ## Instalação no Poco X7
 
 ```bash
-adb -s Q47DQOVSJF5LT4MZ install -r app/build/outputs/apk/debug/app-debug.apk
+adb -s <SERIAL_DO_CELULAR> install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
 ## Configuração (prefs `pentestlink_config`)
 
 | Chave | Padrão | Descrição |
 |-------|--------|-----------|
-| `servidor_url` | `http://100.78.69.110:5000` | Arch (comandos/métricas/terminal) |
-| `chat_url` | `http://100.70.88.101:5000` | Relay (chat/tasks/IA/media/relatorios/pad/finance/reader) |
-| `ia_url` | `http://100.70.88.101:5000/ia` | Namespace IA do relay |
-| `relatorios_url` | `http://100.70.88.101:5000` | Relatórios via relay |
-| `media_url` | `http://100.70.88.101:5000` | Mídia via relay |
-| `pad_url` | `http://100.70.88.101:5000` | Pad via relay |
+| `servidor_url` | `http://<ARCH_TAILSCALE_IP>:5000` | Arch (comandos/métricas/terminal) |
+| `chat_url` | `http://<RELAY_TAILSCALE_IP>:5000` | Relay (chat/tasks/IA/media/relatorios/pad/finance/reader) |
+| `ia_url` | `http://<RELAY_TAILSCALE_IP>:5000/ia` | Namespace IA do relay |
+| `relatorios_url` | `http://<RELAY_TAILSCALE_IP>:5000` | Relatórios via relay |
+| `media_url` | `http://<RELAY_TAILSCALE_IP>:5000` | Mídia via relay |
+| `pad_url` | `http://<RELAY_TAILSCALE_IP>:5000` | Pad via relay |
 
 **Drive (SAF)**: pasta `SPOOK` selecionada manualmente uma vez (tree URI `acc=5` no Poco X7). Persistido em `spook_drive`/`tree_uri`.
 

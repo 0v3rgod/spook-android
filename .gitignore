@@ -19,3 +19,7 @@ app/build/
 *.aab
 *.keystore
 *.jks
+
+# Build artifacts
+.artifacts/
+deps.txt
