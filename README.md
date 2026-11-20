@@ -4,8 +4,8 @@ App Android (Kotlin + Jetpack Compose) do ecossistema SPOOK. Comunica-se com o *
 
 ## Versão atual
 
-- **versionName**: 1.16
-- **versionCode**: 16
+- **versionName**: 1.20
+- **versionCode**: 20
 - **minSdk**: 29 (Android 10)
 - **targetSdk**: 36
 - **Package**: `com.taylor.pentestlink`
@@ -41,7 +41,8 @@ App (Poco X7, Tailscale <CELULAR_TAILSCALE_IP>)
 
 ```bash
 # Requisitos: JDK 17+ (jdk-openjdk no Arch), Android SDK 36
-cd AndroidStudioProjects/PentestLink
+git clone https://github.com/0v3rgod/spook-android.git
+cd spook-android
 ./gradlew assembleDebug
 # APK em: app/build/outputs/apk/debug/app-debug.apk
 ```
